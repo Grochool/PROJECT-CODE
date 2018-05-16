@@ -1,5 +1,6 @@
 ﻿namespace solution_pilkarze
 {
+    [System.Runtime.InteropServices.Guid("CEC3D851-2D3A-46ED-9B44-B23E61E281BA")]
     partial class Form1
     {
         /// <summary>
