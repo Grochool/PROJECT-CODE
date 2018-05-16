@@ -8,5 +8,6 @@ namespace solution_pilkarze
 {
     class Druzyna
     {
+        ///dfdfd
     }
 }
