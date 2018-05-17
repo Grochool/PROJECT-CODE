@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace solution_pilkarze
 {
-    class Druzyna
+   public class Druzyna
     {
         private String nazwa_Druzyny;
         private int rozegraneMecze;
@@ -14,7 +14,6 @@ namespace solution_pilkarze
         private int porazki;
         private int bramki;
         private int punkty;
-        private String liga;
         private int remisy;
 
         public Druzyna()
@@ -99,19 +98,7 @@ namespace solution_pilkarze
                 punkty = value;
             }
         }
-
-        public string Liga
-        {
-            get
-            {
-                return liga;
-            }
-
-            set
-            {
-                liga = value;
-            }
-        }
+        
 
         public int Remisy
         {

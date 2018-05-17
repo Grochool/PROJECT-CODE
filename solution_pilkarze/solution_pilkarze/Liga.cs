@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace solution_pilkarze
 {
-    class Liga
+    public class Liga : Druzyna // liga extend Druzyna
     {
+        private String nazwaLigi;
+        private List<Druzyna> listaDruzyn;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace solution_pilkarze
 {
-    interface Interface
+    interface Interface // Interfejs
     {
         void awans(Liga liga);
         void spadek(Liga liga);
