@@ -62,7 +62,6 @@ namespace solution_pilkarze
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Liga";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 

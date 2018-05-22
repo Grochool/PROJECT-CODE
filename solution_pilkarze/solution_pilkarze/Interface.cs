@@ -8,12 +8,12 @@ namespace solution_pilkarze
 {
     interface Interface // Interfejs
     {
-        void awans(Liga liga);
-        void spadek(Liga liga);
-        void roznica(Liga liga);
-        void zwyciestwapowsredniej(Liga liga);
-        void iloscbramek(List<Liga> list);
-        void straconebramkinamecz(Liga liga);
+        void awans(Form1 liga);
+        void spadek(Form1 liga);
+        void roznica(Form1 liga);
+        void zwyciestwapowsredniej(Form1 liga);
+        void iloscbramek(List<Form1> list);
+        void straconebramkinamecz(Form1 liga);
 
     }
 }

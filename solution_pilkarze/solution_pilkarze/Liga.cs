@@ -8,7 +8,7 @@ namespace solution_pilkarze
 {
     public class Liga : Druzyna // liga extend Druzyna
     {
-        private String nazwaLigi;
+        private string nazwaLigi;
         private List<Druzyna> listaDruzyn;
     }
 }

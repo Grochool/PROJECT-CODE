@@ -8,7 +8,7 @@ namespace solution_pilkarze
 {
    public class Druzyna
     {
-        private String nazwa_Druzyny;
+        private string nazwa_Druzyny;
         private int rozegraneMecze;
         private int zwyciestwa;
         private int porazki;
@@ -99,7 +99,6 @@ namespace solution_pilkarze
             }
         }
         
-
         public int Remisy
         {
             get
