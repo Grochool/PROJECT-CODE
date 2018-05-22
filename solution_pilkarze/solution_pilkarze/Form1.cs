@@ -29,10 +29,10 @@ namespace solution_pilkarze
                 "UID=" + uid + ";" +
                 "PASSWORD=" + pwd + ";";
 
-        public void awans(Form1 liga)   //DONE
+        public void awans(Form1 liga)                   //DONE
         {
             MySqlConnection conn = new MySqlConnection(connection_string);
-            MySqlCommand command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "'" + " limit 3 order by punkty desc");
+            MySqlCommand command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "' order by punkty desc limit 3");
 
             command.Connection = conn;
 
@@ -50,13 +50,13 @@ namespace solution_pilkarze
         public void iloscbramek(List<Form1> list)
         {
             throw new NotImplementedException();
-        }
+        }   //Cokolwiek ma robic...
 
-        public void roznica(Form1 liga)     //DODAJ WYKRES
+        public void roznica(Form1 liga)                 //DONE
         {
             MySqlConnection conn = new MySqlConnection(connection_string);
 
-            MySqlCommand command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "' order by punkty limit 3 ");
+            MySqlCommand command = new MySqlCommand("SELECT bramki from drużyny where liga='" + liga.comboBox1.Text + "' order by punkty limit 3 ");
             command.Connection = conn;
             conn.Open();
             MySqlDataReader read = command.ExecuteReader();
@@ -65,9 +65,10 @@ namespace solution_pilkarze
             {
                 bramki_najlepszych += Convert.ToInt32(read[0]);
             }
+            conn.Close();
 
-
-            command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "'" + " limit 3 order by punkty");
+            conn.Open();
+            command = new MySqlCommand("SELECT bramki from drużyny where liga='" + liga.comboBox1.Text + "' order by punkty limit 3");
             command.Connection = conn;
             read = command.ExecuteReader();
             int bramki_najslabszych = 0;
@@ -78,13 +79,13 @@ namespace solution_pilkarze
             conn.Close();
 
             Chart_slupki chart = new Chart_slupki(bramki_najlepszych, bramki_najslabszych);
-
+            chart.Show();
         }
 
-        public void spadek(Form1 liga)  //DONE
+        public void spadek(Form1 liga)                  //DONE
         {
             MySqlConnection conn = new MySqlConnection(connection_string);
-            MySqlCommand command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "'" + " limit 3 order by punkty");
+            MySqlCommand command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "' order by punkty limit 3");
 
             command.Connection = conn;
 
@@ -132,16 +133,18 @@ namespace solution_pilkarze
             MessageBoxButtons button = MessageBoxButtons.YesNo;
             MessageBoxIcon icon = MessageBoxIcon.Information;
             DialogResult result = MessageBox.Show(messageBoxText, caption, button, icon);
-            switch (result)
+          
+            if(DialogResult.Yes == result)
             {
-                case DialogResult.Yes:
-                    comboBox1.SelectedIndex = -1;
-                    comboBox2.SelectedIndex = -1;
+                option();   //W wyborze opcji są przekierowania do odpowiednich akcji
+            }
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+        }
 
-                    Form form2 = new Form();
-                    form2.Show();
-                    //tu się pokazują wyniki zapytań
-                switch (comboBox2.Text)
+        private void option()
+        {
+            switch (comboBox2.Text)
             {
                 case "Awans":
                     MessageBox.Show("SS");
@@ -159,14 +162,7 @@ namespace solution_pilkarze
                 case "Stracone bramki na mecz":
                     straconebramkinamecz(this);
                     break;
-                }
-
-                case DialogResult.No:
-                    comboBox1.SelectedIndex = -1;
-                    comboBox2.SelectedIndex = -1;
-                    break;
             }
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace solution_pilkarze
 {
@@ -17,9 +18,13 @@ namespace solution_pilkarze
 
         public Chart_slupki(int best, int worst)
         {
-            best = this.best;
-            worst = this.worst;
+            this.best = best;
+            this.worst = worst;
+
             InitializeComponent();
+
+            chart1.Series["Bramki"].Points.AddXY("best",best);
+            chart1.Series["Bramki"].Points.AddXY("worst",worst);
         }
     }
 }
