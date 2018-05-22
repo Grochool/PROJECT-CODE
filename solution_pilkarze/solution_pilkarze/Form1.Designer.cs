@@ -1,6 +1,10 @@
-﻿namespace solution_pilkarze
+﻿using System;
+using System.Collections.Generic;
+
+namespace solution_pilkarze
 {
-    partial class Form1
+    [System.Runtime.InteropServices.Guid("CEC3D851-2D3A-46ED-9B44-B23E61E281BA")]
+    partial class Form1 
     {
         /// <summary>
         /// Required designer variable.
@@ -108,8 +112,13 @@
             this.PerformLayout();
 
         }
+        public void awans(Liga liga) // metody z interfejsu (zgodnie z UML)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
+
 
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
