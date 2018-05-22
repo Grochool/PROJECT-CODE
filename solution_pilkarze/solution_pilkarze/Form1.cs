@@ -39,8 +39,16 @@ namespace solution_pilkarze
             string caption = "Zapytajnik";
             MessageBoxButtons button = MessageBoxButtons.YesNo;
             MessageBoxIcon icon = MessageBoxIcon.Information;
-            MessageBox.Show(messageBoxText, caption, button, icon);
+            DialogResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+            switch (result)
+            {
+                case DialogResult.Yes:
 
+                    break;
+                case DialogResult.No:
+                    
+                    break;
+            }
 
         }
 
