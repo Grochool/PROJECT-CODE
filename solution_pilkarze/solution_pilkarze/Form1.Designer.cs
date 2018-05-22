@@ -89,6 +89,7 @@
             this.ilosc_bramek.TabIndex = 6;
             this.ilosc_bramek.Text = "Ilość bramek";
             this.ilosc_bramek.UseVisualStyleBackColor = true;
+            this.ilosc_bramek.Click += new System.EventHandler(this.ilosc_bramek_Click);
             // 
             // Form1
             // 
