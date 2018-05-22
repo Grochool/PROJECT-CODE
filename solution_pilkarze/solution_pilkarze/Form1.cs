@@ -111,18 +111,19 @@ namespace solution_pilkarze
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //lista od Liga
             comboBox1.Items.Add("Primera Division");
             comboBox1.Items.Add("Bundesliga");
             comboBox1.Items.Add("Premier League");
             comboBox1.Items.Add("Ligue 1");
-
+            //lista od Opcje
             comboBox2.Items.Add("Awans");
             comboBox2.Items.Add("Spadek");
             comboBox2.Items.Add("Różnica");
             comboBox2.Items.Add("Zwycięstwa powyżej średniej");
             comboBox2.Items.Add("Stracone bramki na mecz");
         }
-
+        //button Wyśwetl
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -130,8 +131,17 @@ namespace solution_pilkarze
             string caption = "Zapytajnik";
             MessageBoxButtons button = MessageBoxButtons.YesNo;
             MessageBoxIcon icon = MessageBoxIcon.Information;
-            MessageBox.Show(messageBoxText, caption, button, icon);
-            switch (comboBox2.Text)
+            DialogResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    comboBox1.SelectedIndex = -1;
+                    comboBox2.SelectedIndex = -1;
+
+                    Form form2 = new Form();
+                    form2.Show();
+                    //tu się pokazują wyniki zapytań
+                switch (comboBox2.Text)
             {
                 case "Awans":
                     MessageBox.Show("SS");
@@ -149,6 +159,12 @@ namespace solution_pilkarze
                 case "Stracone bramki na mecz":
                     straconebramkinamecz(this);
                     break;
+                }
+
+                case DialogResult.No:
+                    comboBox1.SelectedIndex = -1;
+                    comboBox2.SelectedIndex = -1;
+                    break;
             }
 
         }
@@ -156,6 +172,11 @@ namespace solution_pilkarze
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ilosc_bramek_Click(object sender, EventArgs e)
+        {
+            //generowanie wykrsów do pdf
         }
     }
 }
