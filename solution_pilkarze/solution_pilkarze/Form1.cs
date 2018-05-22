@@ -100,8 +100,9 @@ namespace solution_pilkarze
             MessageBox.Show(nazwy_druzyn);
         }
 
-        public void straconebramkinamecz(Form1 liga)
+        public void straconebramkinamecz(Form1 liga)    //DONE
         {
+            //FUNKCJONALNOSC NIEMOZLIWA, BRAK DANYCH NA TEMAT STRACONYCH BRAMEK
             throw new NotImplementedException();
         }
 
@@ -133,8 +134,8 @@ namespace solution_pilkarze
             MessageBoxButtons button = MessageBoxButtons.YesNo;
             MessageBoxIcon icon = MessageBoxIcon.Information;
             DialogResult result = MessageBox.Show(messageBoxText, caption, button, icon);
-          
-            if(DialogResult.Yes == result)
+
+            if (DialogResult.Yes == result)
             {
                 option();   //W wyborze opcji są przekierowania do odpowiednich akcji
             }
@@ -172,6 +173,26 @@ namespace solution_pilkarze
 
         private void ilosc_bramek_Click(object sender, EventArgs e)
         {
+            MySqlConnection conn = new MySqlConnection(connection_string);
+            MySqlCommand command = new MySqlCommand("SELECT liga, sum(bramki) from drużyny group by liga");
+
+            command.Connection = conn;
+
+            conn.Open();
+            MySqlDataReader read = command.ExecuteReader();
+            string[] ligi = { "", "", "", "", "" };
+            int[] bramki = { 0, 0, 0, 0, 0 };
+            int i = 0;
+            while (read.Read())
+            {
+                ligi[i] = read[0].ToString();
+                bramki[i] = Convert.ToInt32(read[1]);
+                i++;
+            }
+            conn.Close();
+
+            Chart_bramki chart = new Chart_bramki(ligi, bramki);
+            chart.Show();
             //generowanie wykrsów do pdf
         }
     }

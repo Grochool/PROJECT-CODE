@@ -61,6 +61,18 @@
     <Compile Include="Chart_slupki.Designer.cs">
       <DependentUpon>Chart_slupki.cs</DependentUpon>
     </Compile>
+    <Compile Include="Chart_kolowy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chart_kolowy.Designer.cs">
+      <DependentUpon>Chart_kolowy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chart_bramki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chart_bramki.Designer.cs">
+      <DependentUpon>Chart_bramki.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface.cs" />
     <Compile Include="Liga.cs" />
     <Compile Include="Program.cs" />
@@ -70,6 +82,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Chart_slupki.resx">
       <DependentUpon>Chart_slupki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chart_kolowy.resx">
+      <DependentUpon>Chart_kolowy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chart_bramki.resx">
+      <DependentUpon>Chart_bramki.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
