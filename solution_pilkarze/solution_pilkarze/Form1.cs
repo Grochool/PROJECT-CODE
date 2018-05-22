@@ -151,7 +151,7 @@ namespace solution_pilkarze
             comboBox2.Items.Add("Zwycięstwa powyżej średniej");
             comboBox2.Items.Add("Stracone bramki na mecz");
         }
-        //button Wyśwetl
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -190,11 +190,6 @@ namespace solution_pilkarze
                     straconebramkinamecz(this);
                     break;
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void ilosc_bramek_Click(object sender, EventArgs e) //DONE
