@@ -82,6 +82,7 @@ namespace solution_pilkarze
         public void zwyciestwapowsredniej(Liga liga)
         {
             throw new NotImplementedException();
+        }
 
           private void Form1_Load(object sender, EventArgs e)
         {
