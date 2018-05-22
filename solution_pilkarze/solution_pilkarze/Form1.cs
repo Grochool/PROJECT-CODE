@@ -108,7 +108,33 @@ namespace solution_pilkarze
 
         public void zwyciestwapowsredniej(Form1 liga)
         {
-            throw new NotImplementedException();
+            MySqlConnection conn = new MySqlConnection(connection_string);
+            MySqlCommand command = new MySqlCommand("select Nazwa_druzyny from drużyny where (zwyciestwa / Rozegrane_mecze) > (select avg(zwyciestwa / Rozegrane_mecze) from drużyny)");
+            command.Connection = conn;
+
+            conn.Open();
+            MySqlDataReader read = command.ExecuteReader();
+            int team_above = 0;
+            while (read.Read())
+            {
+                team_above += 1;
+            }
+            conn.Close();
+
+            command = new MySqlCommand("select Nazwa_druzyny from drużyny where (zwyciestwa / Rozegrane_mecze) > (select avg(zwyciestwa / Rozegrane_mecze) from drużyny) AND liga='" + comboBox1.Text +"';");
+            command.Connection = conn;
+
+            conn.Open();
+            read = command.ExecuteReader();
+            int team_below = 0;
+            while (read.Read())
+            {
+                team_below += 1;
+            }
+            conn.Close();
+
+            Chart_kolowy chart = new Chart_kolowy(team_above, team_below);
+            chart.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -171,7 +197,7 @@ namespace solution_pilkarze
 
         }
 
-        private void ilosc_bramek_Click(object sender, EventArgs e)
+        private void ilosc_bramek_Click(object sender, EventArgs e) //DONE
         {
             MySqlConnection conn = new MySqlConnection(connection_string);
             MySqlCommand command = new MySqlCommand("SELECT liga, sum(bramki) from drużyny group by liga");
