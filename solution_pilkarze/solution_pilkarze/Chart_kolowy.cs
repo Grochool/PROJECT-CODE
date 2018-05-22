@@ -29,7 +29,7 @@ namespace solution_pilkarze
             chart1.Series["Zwyciestwa"].Points[0].Color = System.Drawing.Color.Green;
             chart1.Series["Zwyciestwa"].Points[1].Color = System.Drawing.Color.Red;
 
-
+            chart1.SaveImage(@"C:\\Users\\Wiktor\\Pictures\\test.png", System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
 
         }
     }
