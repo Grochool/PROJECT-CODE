@@ -42,6 +42,7 @@ namespace solution_pilkarze
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(85, 62);
             this.comboBox1.Name = "comboBox1";
@@ -51,6 +52,7 @@ namespace solution_pilkarze
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(85, 98);
             this.comboBox2.Name = "comboBox2";
@@ -77,7 +79,7 @@ namespace solution_pilkarze
             // 
             // wyswietl
             // 
-            this.wyswietl.Location = new System.Drawing.Point(182, 160);
+            this.wyswietl.Location = new System.Drawing.Point(209, 183);
             this.wyswietl.Name = "wyswietl";
             this.wyswietl.Size = new System.Drawing.Size(75, 23);
             this.wyswietl.TabIndex = 5;
@@ -87,7 +89,7 @@ namespace solution_pilkarze
             // 
             // ilosc_bramek
             // 
-            this.ilosc_bramek.Location = new System.Drawing.Point(182, 213);
+            this.ilosc_bramek.Location = new System.Drawing.Point(209, 212);
             this.ilosc_bramek.Name = "ilosc_bramek";
             this.ilosc_bramek.Size = new System.Drawing.Size(75, 23);
             this.ilosc_bramek.TabIndex = 6;
@@ -99,7 +101,7 @@ namespace solution_pilkarze
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(296, 247);
             this.Controls.Add(this.ilosc_bramek);
             this.Controls.Add(this.wyswietl);
             this.Controls.Add(this.opcje);

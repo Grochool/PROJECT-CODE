@@ -29,9 +29,22 @@ namespace solution_pilkarze
                 "UID=" + uid + ";" +
                 "PASSWORD=" + pwd + ";";
 
-        public void awans(Form1 liga)
+        public void awans(Form1 liga)   //DONE
         {
-            throw new NotImplementedException();
+            MySqlConnection conn = new MySqlConnection(connection_string);
+            MySqlCommand command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "'" + " limit 3 order by punkty desc");
+
+            command.Connection = conn;
+
+            conn.Open();
+            MySqlDataReader read = command.ExecuteReader();
+            string nazwy_druzyn = "";
+            while (read.Read())
+            {
+                nazwy_druzyn += read[0] + "\n";
+            }
+            conn.Close();
+            MessageBox.Show(nazwy_druzyn);
         }
 
         public void iloscbramek(List<Form1> list)
@@ -39,37 +52,54 @@ namespace solution_pilkarze
             throw new NotImplementedException();
         }
 
-        public void iloscbramek(List<Liga> list)
+        public void roznica(Form1 liga)     //DODAJ WYKRES
         {
-            throw new NotImplementedException();
+            MySqlConnection conn = new MySqlConnection(connection_string);
+
+            MySqlCommand command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "' order by punkty limit 3 ");
+            command.Connection = conn;
+            conn.Open();
+            MySqlDataReader read = command.ExecuteReader();
+            int bramki_najlepszych = 0;
+            while (read.Read())
+            {
+                bramki_najlepszych += Convert.ToInt32(read[0]);
+            }
+
+
+            command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "'" + " limit 3 order by punkty");
+            command.Connection = conn;
+            read = command.ExecuteReader();
+            int bramki_najslabszych = 0;
+            while (read.Read())
+            {
+                bramki_najslabszych += Convert.ToInt32(read[0]);
+            }
+            conn.Close();
+
+            Chart_slupki chart = new Chart_slupki(bramki_najlepszych, bramki_najslabszych);
+
         }
 
-        public void roznica(Form1 liga)
+        public void spadek(Form1 liga)  //DONE
         {
-            throw new NotImplementedException();
-        }
+            MySqlConnection conn = new MySqlConnection(connection_string);
+            MySqlCommand command = new MySqlCommand("SELECT Nazwa_druzyny from drużyny where liga='" + liga.comboBox1.Text + "'" + " limit 3 order by punkty");
 
-        public void roznica(Liga liga)
-        {
-            throw new NotImplementedException();
-        }
+            command.Connection = conn;
 
-        public void spadek(Form1 liga)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void spadek(Liga liga)
-        {
-            throw new NotImplementedException();
+            conn.Open();
+            MySqlDataReader read = command.ExecuteReader();
+            string nazwy_druzyn = "";
+            while (read.Read())
+            {
+                nazwy_druzyn += read[0] + "\n";
+            }
+            conn.Close();
+            MessageBox.Show(nazwy_druzyn);
         }
 
         public void straconebramkinamecz(Form1 liga)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void straconebramkinamecz(Liga liga)
         {
             throw new NotImplementedException();
         }
@@ -79,12 +109,7 @@ namespace solution_pilkarze
             throw new NotImplementedException();
         }
 
-        public void zwyciestwapowsredniej(Liga liga)
-        {
-            throw new NotImplementedException();
-        }
-
-          private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             //lista od Liga
             comboBox1.Items.Add("Primera Division");
@@ -101,7 +126,7 @@ namespace solution_pilkarze
         //button Wyśwetl
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             string messageBoxText = "Czy jesteś pewny?";
             string caption = "Zapytajnik";
             MessageBoxButtons button = MessageBoxButtons.YesNo;
@@ -116,7 +141,25 @@ namespace solution_pilkarze
                     Form form2 = new Form();
                     form2.Show();
                     //tu się pokazują wyniki zapytań
+                switch (comboBox2.Text)
+            {
+                case "Awans":
+                    MessageBox.Show("SS");
+                    awans(this);
                     break;
+                case "Spadek":
+                    spadek(this);
+                    break;
+                case "Różnica":
+                    roznica(this);
+                    break;
+                case "Zwycięstwa powyżej średniej":
+                    zwyciestwapowsredniej(this);
+                    break;
+                case "Stracone bramki na mecz":
+                    straconebramkinamecz(this);
+                    break;
+                }
 
                 case DialogResult.No:
                     comboBox1.SelectedIndex = -1;
