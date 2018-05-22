@@ -10,10 +10,15 @@ using System.Windows.Forms;
 
 namespace solution_pilkarze
 {
-    public partial class chart_1 : Form
+    public partial class Chart_slupki : Form
     {
-        public chart_1()
+        private int best;
+        private int worst;
+
+        public Chart_slupki(int best, int worst)
         {
+            best = this.best;
+            worst = this.worst;
             InitializeComponent();
         }
     }
