@@ -174,7 +174,6 @@ namespace solution_pilkarze
             switch (comboBox2.Text)
             {
                 case "Awans":
-                    MessageBox.Show("SS");
                     awans(this);
                     break;
                 case "Spadek":
