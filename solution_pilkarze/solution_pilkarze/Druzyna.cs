@@ -15,12 +15,7 @@ namespace solution_pilkarze
         private int bramki;
         private int punkty;
         private int remisy;
-
-        public Druzyna()
-        {
-
-        }
-
+  
         public string Nazwa_Druzyny
         {
             get
